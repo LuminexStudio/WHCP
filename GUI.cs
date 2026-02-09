@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using BepInEx;
 using UnityEngine;
@@ -21,10 +21,8 @@ namespace WHCP.Gui
 
         void Update()
         {
-            // Toggle menu with Q
             if (UnityInputSafe.GetKeyDown(KeyCode.Q)) showMenu = !showMenu;
 
-            // Network Sync Loop (~5 seconds)
             if (PhotonNetwork.InRoom && Time.frameCount % 500 == 0)
             {
                 ApplyNetworkLogic();
@@ -56,7 +54,6 @@ namespace WHCP.Gui
         {
             GUILayout.BeginVertical();
 
-            // --- ROOM CONTROLS ---
             GUILayout.Label($"<b> ROOM STATE: {PhotonNetwork.NetworkClientState} </b>");
             GUILayout.BeginHorizontal();
 
@@ -78,7 +75,6 @@ namespace WHCP.Gui
             }
             GUILayout.EndHorizontal();
 
-            // --- ADD SECTION ---
             GUILayout.Label("<b> ADD NEW PROPERTY </b>");
             tempKey = GUILayout.TextField(tempKey);
             tempVal = GUILayout.TextField(tempVal);
@@ -90,7 +86,6 @@ namespace WHCP.Gui
 
             GUILayout.Space(10);
 
-            // --- LISTS ---
             GUILayout.Label("<b> CURRENT PROPERTIES </b>");
             foreach (var key in new List<string>(activeProperties.Keys))
             {
