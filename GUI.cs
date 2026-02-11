@@ -34,10 +34,10 @@ namespace WHCP.Gui
             if (PhotonNetwork.LocalPlayer == null) return;
             Hashtable updates = new Hashtable();
 
-            // Force Always Public
+    
             foreach (var prop in activeProperties) updates[prop.Key] = prop.Value;
 
-            // Force Blacklist Deletion
+        
             foreach (var key in blacklistedKeys) updates[key] = null;
 
             if (updates.Count > 0) PhotonNetwork.LocalPlayer.SetCustomProperties(updates);
@@ -123,3 +123,4 @@ namespace WHCP.Gui
         }
     }
 }
+
